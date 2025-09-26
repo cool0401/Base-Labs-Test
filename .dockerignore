@@ -1,0 +1,15 @@
+.git
+node_modules
+client/node_modules
+server/node_modules
+client/dist
+dist
+.env
+client/.env
+server/.env
+*.log
+Dockerfile
+docker-compose.yml
+README.md
+.github
+

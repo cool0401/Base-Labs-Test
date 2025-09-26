@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: bob-corn-redis
+    ports:
+      - "6379:6379"
+
+  server:
+    build:
+      context: ./server
+    container_name: bob-corn-server
+    environment:
+      PORT: 3000
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+  client:
+    build:
+      context: ./client
+    container_name: bob-corn-client
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+
